@@ -12,7 +12,7 @@
         "url": "git+https://github.com/ADI10HERO/JsonGenerator.git"
     },
     "author": "adi10hero, shintan777",
-    "license": "ISC",
+    "license": "MIT",
     "bugs": {
         "url": "https://github.com/ADI10HERO/JsonGenerator/issues"
     },

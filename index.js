@@ -1,2 +1,7 @@
-// TODO: function getRandomNumber(min=0, max=1) --> shintan777
-// TODO: function getRandomBool() --> adi10hero
+function getRandomNumber(min = 0, max = 1) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function getRandomBool() {
+    return getRandomNumber() >= 0.5;
+}
