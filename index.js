@@ -5,6 +5,3 @@ function getRandomNumber(min = 0, max = 1, precision = 2) {
 function getRandomBool() {
     return getRandomNumber() >= 0.5;
 }
-
-console.log(getRandomNumber(123, 35464))
-console.log(getRandomBool())
