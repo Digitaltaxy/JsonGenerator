@@ -25,7 +25,7 @@ function getRandomString(requiredLength = 5) {
 }
 
 function getRandomImage(width = 200, height = 300) {
-    return `https: //picsum.photos/ ${ width }/ ${ height }`;
+    return `https://picsum.photos/${ width }/${ height }`;
 }
 
 function generateJson() {
