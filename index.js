@@ -7,14 +7,23 @@ var app = express();
 
 app.use(bodyParser.json());
 app.post('/random', (req, res) => {
-    lengthArray = req.body.n;
-    let responseJson = {};
-    for (var i = 0; i < lengthArray; i++) {
-        responseJson[i + 1] = random.generateJson();
-    }
     res.header('Content-Type', 'application/json');
-    res.send(JSON.stringify(responseJson));
+    res.send(JSON.stringify(random.dataGenerator(req.body.n)));
 });
+
+// var Scraper = require('images-scraper');
+
+// const google = new Scraper({
+//     puppeteer: {
+//         headless: false,
+//     }
+// });
+
+// (async () => {
+//     const results = await google.scrape('nose pins product image', 20);
+//     console.log('results', results);
+// })();
+
 
 app.listen(port, () => console.log("Starting server..."))
 
