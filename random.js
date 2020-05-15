@@ -24,13 +24,35 @@ function getRandomString(requiredLength = 5) {
     return "np" + getRandomInt(+min_, +max_);
 }
 
-function getRandomImage(width = 200, height = 300, count = 2) {
-    let randomImages = [];
-    for (var i = 0; i < count; i++) {
-        randomImages.push(`https://picsum.photos/${ width }/${ height }`);
+// function getRandomImage(width = 200, height = 300, count = 2) {
+//     let randomImages = [];
+//     for (var i = 0; i < count; i++) {
+//         randomImages.push(`https://picsum.photos/${ width }/${ height }`);
+//     }
+//     return randomImages;
+// }
+// 
+function getRandomImage(count = 2, width = 200, height = 300){
+    
+    var Scraper = require('images-scraper');
+    const google = new Scraper({
+      puppeteer: {
+        headless: false,
+      }
+    });
+     var results = '';
+    (async () => {
+       results = await google.scrape('nose pin', count);
+    })();
+    var imgs = [];
+    for (let i = 0; i < results.length; i++) {
+        imgs.push(results[i].url);
     }
-    return randomImages;
+    // console.log(imgs);
+    return imgs
 }
+getRandomImage();
+
 
 function generateJson() {
     template = {
