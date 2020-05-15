@@ -24,14 +24,18 @@ function getRandomString(requiredLength = 5) {
     return "np" + getRandomInt(+min_, +max_);
 }
 
-function getRandomImage(width = 200, height = 300) {
-    return `https://picsum.photos/${ width }/${ height }`;
+function getRandomImage(width = 200, height = 300, count = 2) {
+    let randomImages = [];
+    for (var i = 0; i < count; i++) {
+        randomImages.push(`https://picsum.photos/${ width }/${ height }`);
+    }
+    return randomImages;
 }
 
 function generateJson() {
     template = {
         'Style Number': getRandomString(),
-        'Images': [getRandomImage(), getRandomImage()],
+        'Images': getRandomImage(),
         'Diamond Weight': getRandomNumber(min = 0, max = 2),
         'Gold Weight': getRandomNumber(min = 0, max = 4, precision = 3),
         'Diamond Count': getRandomInt(min = 0, max = 100),
