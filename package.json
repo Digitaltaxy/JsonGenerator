@@ -16,5 +16,8 @@
     "bugs": {
         "url": "https://github.com/ADI10HERO/JsonGenerator/issues"
     },
-    "homepage": "https://github.com/ADI10HERO/JsonGenerator#readme"
+    "homepage": "https://github.com/ADI10HERO/JsonGenerator#readme",
+    "dependencies": {
+        "express": "^4.17.1"
+    }
 }

@@ -1,8 +1,16 @@
-// using "np" as the prefix...
+function getRandomNumber(min = 0, max = 1, precision = 2) {
+    return (Math.random() * (max - min) + min).toFixed(precision);
+}
 
-var random = require('./index.js');
+function getRandomBool() {
+    return getRandomNumber() >= 0.5;
+}
 
-function getRandomString(requiredLength) {
+function getRandomInt(min = 0, max = 1) {
+    return Math.floor(getRandomNumber(min, max));
+}
+
+function getRandomString(requiredLength = 5) {
     if (requiredLength <= 2) {
         return "Too short String";
         // later return an anagram or bi-gram as per discussion 
@@ -15,5 +23,3 @@ function getRandomString(requiredLength) {
 
     return "np" + random.getRandomInt(+min_, +max_);
 }
-
-console.log(getRandomString(5))

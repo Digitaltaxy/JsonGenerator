@@ -1,11 +1,17 @@
-function getRandomNumber(min = 0, max = 1, precision = 2) {
-    return (Math.random() * (max - min) + min).toFixed(precision);
-}
+const express = require('express');
+const random = require('./random.js');
 
-function getRandomBool() {
-    return getRandomNumber() >= 0.5;
-}
+const port = 3000;
+var app = express();
 
-function getRandomInt(min = 0, max = 1) {
-    return Math.floor(getRandomNumber(min, max));
-}
+app.get('/', (req, res) => {
+    res.send('Test');
+});
+
+app.post('/random', (req, res) => {
+    console.log(req);
+    res.sendStatus(200);
+});
+
+
+app.listen(port, () => console.log(`Started server at http://localhost:{ port }`))
