@@ -6,14 +6,13 @@ const port = 3000;
 var app = express();
 
 app.use(bodyParser.json());
-app.post('/random', (req, res) => {
-    lengthArray = req.body.n;
-    let responseJson = {};
-    for (var i = 0; i < lengthArray; i++) {
-        responseJson[i + 1] = random.generateJson();
-    }
+app.post('/random', async(req, res) => {
     res.header('Content-Type', 'application/json');
-    res.send(JSON.stringify(responseJson));
+    random.generateJson(req.body.n).then(
+        (data) => {
+            res.send(JSON.stringify(data));
+        }
+    );
 });
 
 app.listen(port, () => console.log("Starting server..."))

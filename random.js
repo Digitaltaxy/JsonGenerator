@@ -24,55 +24,39 @@ function getRandomString(requiredLength = 5) {
     return "np" + getRandomInt(+min_, +max_);
 }
 
-// function getRandomImage(width = 200, height = 300, count = 2) {
-//     let randomImages = [];
-//     for (var i = 0; i < count; i++) {
-//         randomImages.push(`https://picsum.photos/${ width }/${ height }`);
-//     }
-//     return randomImages;
-// }
-// 
-function getRandomImage(count = 2, width = 200, height = 300){
-    
+async function getRandomImages(count = 2, query = 'nose pin', width = 200, height = 300) {
+
     var Scraper = require('images-scraper');
     const google = new Scraper({
-      puppeteer: {
-        headless: false,
-      }
+        puppeteer: {
+            headless: true,
+        }
     });
-     var results = '';
-    (async () => {
-       results = await google.scrape('nose pin', count);
-    })();
-    var imgs = [];
-    for (let i = 0; i < results.length; i++) {
-        imgs.push(results[i].url);
-    }
-    // console.log(imgs);
-    return imgs
+    let imageUrls = [];
+    return google.scrape(query, count).then((results) => {
+        for (let i = 0; i < results.length; i++) {
+            imageUrls.push(results[i].url);
+        }
+    }).then(() => {
+        return imageUrls;
+    });
 }
-getRandomImage();
 
-
-function generateJson() {
+exports.generateJson = async(x) => {
+    let returnArr = [];
     template = {
-        'Style Number': getRandomString(),
-        'Images': getRandomImage(),
-        'Diamond Weight': getRandomNumber(min = 0, max = 2),
-        'Gold Weight': getRandomNumber(min = 0, max = 4, precision = 3),
-        'Diamond Count': getRandomInt(min = 0, max = 100),
-        'Design Parameters': {
-            'Featured Design': getRandomBool(),
-            'Highest Selling': getRandomBool(),
-            'Fancy Diamond': getRandomBool(),
-            'New Design': getRandomBool(),
+        'StyleNumber': getRandomString(),
+        'Images': await getRandomImages(),
+        'DiamondWeight': getRandomNumber(min = 0, max = 2),
+        'GoldWeight': getRandomNumber(min = 0, max = 4, precision = 3),
+        'DiamondCount': getRandomInt(min = 0, max = 100),
+        'DesignParameters': {
+            'featuredDesign': getRandomBool(),
+            'highestSelling': getRandomBool(),
+            'hancyDiamond': getRandomBool(),
+            'newDesign': getRandomBool(),
         }
     };
-
-    return template;
-
+    for (var i = 0; i < x; i++) returnArr.push(template);
+    return returnArr;
 }
-
-module.exports = {
-    generateJson: generateJson
-};
