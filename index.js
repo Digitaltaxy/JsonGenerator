@@ -6,6 +6,7 @@ const port = 3000;
 var app = express();
 
 app.use(bodyParser.json());
+
 app.post('/random', async(req, res) => {
     res.header('Content-Type', 'application/json');
     random.generateJson(req.body.n).then(
@@ -14,6 +15,20 @@ app.post('/random', async(req, res) => {
         }
     );
 });
+
+// var Scraper = require('images-scraper');
+
+// const google = new Scraper({
+//     puppeteer: {
+//         headless: false,
+//     }
+// });
+
+// (async () => {
+//     const results = await google.scrape('nose pins product image', 20);
+//     console.log('results', results);
+// })();
+
 
 app.listen(port, () => console.log("Starting server..."))
 
