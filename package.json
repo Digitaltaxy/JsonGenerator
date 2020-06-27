@@ -1,0 +1,25 @@
+{
+    "name": "jsongenerator",
+    "version": "1.0.0",
+    "description": "A random Json Data Generator",
+    "main": "index.js",
+    "scripts": {
+        "start": "index.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/ADI10HERO/JsonGenerator.git"
+    },
+    "author": "adi10hero, shintan777",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/ADI10HERO/JsonGenerator/issues"
+    },
+    "homepage": "https://github.com/ADI10HERO/JsonGenerator#readme",
+    "dependencies": {
+        "body-parser": "^1.19.0",
+        "express": "^4.17.1",
+        "images-scraper": "^5.0.7"
+    }
+}
